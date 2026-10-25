@@ -63,3 +63,15 @@ bunx wrangler r2 object put files/hello.txt --local --file ./hello.txt
 bun run dev
 bun run check   # regenerate types + tsc
 ```
+
+`bun install` also generates `worker-configuration.d.ts` (the runtime types), which is not
+committed.
+
+## CI and releases
+
+- **Check** (`.github/workflows/check.yaml`) type-checks and builds every pull request.
+- **Release** (`.github/workflows/release.yaml`) runs semantic-release on `main`. Commits follow
+  [Conventional Commits](https://www.conventionalcommits.org/): `feat` makes a minor
+  release, `fix` a patch. Each release gets the `r2-index.js` bundle attached.
+- **Renovate** (`renovate.json`) opens update PRs for dependencies and actions. Minor and patch
+  updates merge automatically once Check passes. `compatibility_date` is bumped by hand.
