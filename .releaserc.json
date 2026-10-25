@@ -6,7 +6,14 @@
     [
       "@semantic-release/github",
       {
-        "labels": false
+        "labels": false,
+        "assets": [
+          {
+            "path": "dist/index.js",
+            "name": "r2-index.js",
+            "label": "r2-index.js (paste into the Cloudflare dashboard editor)"
+          }
+        ]
       }
     ]
   ]

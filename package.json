@@ -1,0 +1,22 @@
+{
+  "name": "r2-index",
+  "version": "0.0.0-development",
+  "private": true,
+  "license": "GPL-3.0-or-later",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "build": "wrangler deploy --dry-run --outdir dist",
+    "postinstall": "wrangler types",
+    "types": "wrangler types",
+    "check": "wrangler types && tsc --noEmit",
+    "release": "semantic-release"
+  },
+  "devDependencies": {
+    "@semantic-release/github": "^12.0.10",
+    "semantic-release": "^25.0.9",
+    "typescript": "^7.0.2",
+    "wrangler": "^4.152.0"
+  }
+}
