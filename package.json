@@ -1,0 +1,17 @@
+{
+  "name": "r2-index",
+  "version": "0.0.0-development",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "build": "wrangler deploy --dry-run --outdir dist",
+    "types": "wrangler types",
+    "check": "wrangler types && tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2",
+    "wrangler": "^4.152.0"
+  }
+}
