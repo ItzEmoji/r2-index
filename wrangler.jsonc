@@ -1,0 +1,37 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "r2-index",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-01",
+  "observability": { "enabled": true },
+
+  // Keep variables edited in the dashboard instead of resetting them to the ones below on deploy.
+  "keep_vars": true,
+
+  // Every R2 binding is picked up automatically, whether it comes from here or from the dashboard.
+  //  - one bucket      -> served at "/"
+  //  - several buckets -> "/" lists them, each one lives under "/<binding in lowercase>/"
+  // The binding name is only the identifier, "bucket_name" is the real R2 bucket.
+  // Leave "bucket_name" out and `wrangler deploy` creates the bucket for you.
+  // Careful: `wrangler deploy` replaces ALL bindings with this list, so buckets added in the
+  // dashboard disappear on the next deploy. Manage them in one place (see README).
+  "r2_buckets": [
+    { "binding": "FILES", "bucket_name": "files" },
+    // { "binding": "ISOS", "bucket_name": "my-iso-mirror" }
+  ],
+
+  "vars": {
+    // Show sizes in exact bytes (nginx default) instead of 49K / 3M / 4G.
+    "AUTOINDEX_EXACT_SIZE": "false",
+    // Hide keys whose name starts with a dot.
+    "HIDE_DOTFILES": "true",
+    // Edge-cache TTL (seconds) for directory listings and for files.
+    "LISTING_CACHE_TTL": "30",
+    "FILE_CACHE_TTL": "3600",
+  },
+
+  // Optional: `wrangler secret put PURGE_TOKEN` to require ?purge=<token>.
+  // Without it, ?purge drops the cached listing for anyone (harmless, just a cache miss).
+
+  // "routes": [{ "pattern": "mirror.example.com", "custom_domain": true }]
+}
