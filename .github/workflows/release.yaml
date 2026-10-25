@@ -30,4 +30,4 @@ jobs:
       - name: Release
         env:
           GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
-        run: bunx semantic-release
+        run: bun run release

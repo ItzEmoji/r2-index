@@ -8,9 +8,12 @@
     "deploy": "wrangler deploy",
     "build": "wrangler deploy --dry-run --outdir dist",
     "types": "wrangler types",
-    "check": "wrangler types && tsc --noEmit"
+    "check": "wrangler types && tsc --noEmit",
+    "release": "semantic-release"
   },
   "devDependencies": {
+    "@semantic-release/github": "^12.0.10",
+    "semantic-release": "^25.0.9",
     "typescript": "^7.0.2",
     "wrangler": "^4.152.0"
   }
