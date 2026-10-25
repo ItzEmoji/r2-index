@@ -7,6 +7,7 @@
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
     "build": "wrangler deploy --dry-run --outdir dist",
+    "postinstall": "wrangler types",
     "types": "wrangler types",
     "check": "wrangler types && tsc --noEmit",
     "release": "semantic-release"

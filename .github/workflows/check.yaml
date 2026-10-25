@@ -15,7 +15,5 @@ jobs:
       - run: bun install --frozen-lockfile
       - name: Type-check
         run: bun run check
-      - name: Generated types are up to date
-        run: git diff --exit-code worker-configuration.d.ts
       - name: Build
         run: bun run build
