@@ -10,15 +10,15 @@ You can set it up in either of two ways.
 ### With Wrangler
 
 ```sh
-npm install
-npx wrangler r2 bucket create files   # or leave out "bucket_name" and deploy creates it
-npm run deploy
+bun install
+bunx wrangler r2 bucket create files   # or leave out "bucket_name" and deploy creates it
+bun run deploy
 ```
 
 ### Without Wrangler, in the dashboard only
 
 1. Download `r2-index.js` from the latest [release](../../releases/latest), or build it yourself
-   with `npm run build`, which writes `dist/index.js`.
+   with `bun run build`, which writes `dist/index.js`.
 2. **Workers & Pages → Create → Start with Hello World**, open **Edit code**, replace everything
    with the contents of `r2-index.js` and click **Deploy**.
 3. **Settings → Bindings → Add → R2 bucket**: pick a bucket and give it a binding name, such as
@@ -54,12 +54,12 @@ Everything lives in `wrangler.jsonc`. Each entry in `r2_buckets` gets picked up 
 | `FILE_CACHE_TTL`       | `3600`  | `max-age` for files with no own `Cache-Control` |
 
 Append `?purge` to a URL to drop it from the edge cache. If you set a `PURGE_TOKEN` secret
-(`wrangler secret put PURGE_TOKEN`), you have to use `?purge=<token>`.
+(`bunx wrangler secret put PURGE_TOKEN`), you have to use `?purge=<token>`.
 
 ## Development
 
 ```sh
-npx wrangler r2 object put files/hello.txt --local --file ./hello.txt
-npm run dev
-npm run check   # regenerate types + tsc
+bunx wrangler r2 object put files/hello.txt --local --file ./hello.txt
+bun run dev
+bun run check   # regenerate types + tsc
 ```
