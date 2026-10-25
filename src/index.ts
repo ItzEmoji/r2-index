@@ -1,5 +1,7 @@
-// SPDX-License-Identifier: GPL-3.0-or-later
-// Copyright (C) 2026 Cyril Dettling
+/*!
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ * Copyright (C) 2026 Cyril Dettling
+ */
 
 type Bindings = Record<string, unknown>;
 
