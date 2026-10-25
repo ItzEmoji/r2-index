@@ -1,0 +1,21 @@
+name: Check
+permissions:
+  contents: read
+on:
+  pull_request:
+concurrency:
+  group: check-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install --frozen-lockfile
+      - name: Type-check
+        run: bun run check
+      - name: Generated types are up to date
+        run: git diff --exit-code worker-configuration.d.ts
+      - name: Build
+        run: bun run build
